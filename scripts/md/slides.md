@@ -1602,5 +1602,3 @@ content_class: flexbox vcenter centered
 <div class="build">
 <h2><a href="http://polymer-project.org"><span class="elements">polymer</span><span class="hide">-</span><span class="core">project</span><span class="hide">.</span><span class="platform">org</span></a></h2>
 </div>
-
----
