@@ -192,6 +192,10 @@ body {
     background: url('../../images/bgs/bg-rep.png');
     background-size: 20px;
   }
+  &.fatunicorn {
+    background: url('../../images/gifs/fat-unicorn.gif') no-repeat 0 50%;
+    background-size: cover;
+  }
 }
 
 slide.current {
@@ -1089,4 +1093,13 @@ slide.thank-you-slide {
     color: $brand-blue-secondary2;
     font-size: 24pt;
   }
+}
+
+
+.no-top-margin {
+  margin-top: 0 !important;
+}
+
+.no-bold b {
+  font-weight: 300 !important;
 }

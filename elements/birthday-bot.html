@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="birthday-bot" attributes="mood">
+  <template>
+    <img id="moodImg" src="">
+    <input type="text" value="{{mood}}">
+  </template>
+  <script>
+    Polymer('birthday-bot', {
+      moodChanged: function(oldVal, newVal) {
+        if (newVal == 'sad') {
+          this.$.moodImg.src = 'sad.gif';
+        } else if (newVal == 'happy') {
+          this.$.moodImg.src = 'happy.gif';
+        }
+      }
+    });
+  </script>
+</polymer-element>

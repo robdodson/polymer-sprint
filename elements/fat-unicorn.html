@@ -1,0 +1,16 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="fat-unicorn">
+  <template>
+    <h1>
+      Hello, my name is: <span id="myName"></span>
+    </h1>
+  </template>
+  <script>
+    Polymer('fat-unicorn', {
+      ready: function() {
+        var myName = this.$.myName;
+        myName.textContent = 'Fat Unicorn';
+      }
+    });
+  </script>
+</polymer-element>

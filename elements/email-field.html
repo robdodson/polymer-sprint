@@ -1,0 +1,17 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="email-field" attributes="address">
+  <template>
+    <label for="email">Enter email:</label>
+    <input type="text" id="email" value="{{address}}">
+  </template>
+  <script>
+  Polymer('email-field', {
+    addressChanged: function(oldVal, newVal) {
+      if (newVal && newVal.indexOf('@') != -1) {
+        return this.$.email.style.border = '3px solid green';
+      }
+      this.$.email.style.border = '1px solid silver';
+    }
+  });
+  </script>
+</polymer-element>
