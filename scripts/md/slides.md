@@ -717,6 +717,83 @@ content_class: no-top-margin
 
 ---
 
+# title: Styling Host Context
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="smart-text" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host-context(.shadow) ::content h1 {
+        text-shadow: 10px 10px 10px #999;
+      }
+    &lt;/style&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;div class="shadow"&gt;
+  &lt;smart-text&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/smart-text&gt;
+&lt;/div&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <div class="shadow">
+      <smart-text>
+        <h1>Hello World</h1>
+      </smart-text>
+    </div>
+  </output>
+</div>
+
+---
+
+body_class: elements-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;">To pierce <em>one level</em> of Shadow Trees use the <em>::shadow pseudo-element</em>.</h2>
+<br>
+<h2 class="faded" style="font-size: 54px;">To pierce <em>N levels</em> of Shadow Trees use the <em>/deep/ combinator</em>.</h2>
+
+---
+
+# title: Styling Host Context
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-foo" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;h1&gt;Hello from x-foo&lt;/h1&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-bar" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      <b>x-foo::shadow h1 {
+        color: red;
+      }</b>
+    &lt;/style&gt;
+    <b>&lt;x-foo&gt;&lt;/x-foo&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <x-bar></x-bar>
+  </output>
+</div>
+
+---
+
 content_class: no-top-margin
 
 <div class="build callback-list">
@@ -753,6 +830,7 @@ content_class: flexbox vleft
 
 ---
 
+hidden: true
 content_class: no-top-margin
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">

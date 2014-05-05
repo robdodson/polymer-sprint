@@ -1142,6 +1142,111 @@ https://code.google.com/p/io-2012-slides
       <h2></h2>
       <h3></h3>
     </hgroup>
+    <article class="no-top-margin"><pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="smart-text" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host-context(.shadow) ::content h1 {
+        text-shadow: 10px 10px 10px #999;
+      }
+    &lt;/style&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;div class="shadow"&gt;
+  &lt;smart-text&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/smart-text&gt;
+&lt;/div&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <div class="shadow">
+      <smart-text>
+        <h1>Hello World</h1>
+      </smart-text>
+    </div>
+  </output>
+</div></article>
+ 
+</slide>
+
+<slide    data-body-class="elements-fill" >
+  
+    <hgroup>
+      <span>
+        
+        
+        
+        
+      </span>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article class="flexbox vleft"><h2 class="faded" style="font-size: 54px;">To pierce <em>one level</em> of Shadow Trees use the <em>::shadow pseudo-element</em>.</h2>
+
+<p><br>
+<h2 class="faded" style="font-size: 54px;">To pierce <em>N levels</em> of Shadow Trees use the <em>/deep/ combinator</em>.</h2></p></article>
+ 
+</slide>
+
+<slide     >
+  
+    <hgroup>
+      <span>
+        
+        
+        
+        
+      </span>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
+    <article class="no-top-margin"><pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-foo" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;h1&gt;Hello from x-foo&lt;/h1&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-bar" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      <b>x-foo::shadow h1 {
+        color: red;
+      }</b>
+    &lt;/style&gt;
+    <b>&lt;x-foo&gt;&lt;/x-foo&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <x-bar></x-bar>
+  </output>
+</div></article>
+ 
+</slide>
+
+<slide     >
+  
+    <hgroup>
+      <span>
+        
+        
+        
+        
+      </span>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
     <article class="no-top-margin"><div class="build callback-list">
   <div>
     <pre class="prettyprint">:host or :host()</pre>
@@ -1184,7 +1289,7 @@ https://code.google.com/p/io-2012-slides
  
 </slide>
 
-<slide     >
+<slide     hidden>
   
     <hgroup>
       <span>
@@ -1506,8 +1611,8 @@ https://code.google.com/p/io-2012-slides
 <slide class="thank-you-slide segue nobackground large">
   <aside class="gdbar right"><img src="images/logos/chrome_logo.png"></aside>
   <article class="flexbox vleft auto-fadein">
-    <h2>Thank You!</h2>
-    <div style="margin-bottom:5em;"><a href="http://robdodson.me/polymer-austinjs">robdodson.me/polymer-austinjs</a></div>
+    <h2>Grab the slides!</h2>
+    <div style="margin-bottom:5em;"><a href="http://go/poly-sprint-bootcamp">go/poly-sprint-bootcamp</a></div>
   </article>
   <p class="auto-fadein" data-config-contact></p>
 </slide>
