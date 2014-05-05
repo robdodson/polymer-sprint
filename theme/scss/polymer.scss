@@ -215,6 +215,14 @@ body {
     background: url('../../images/gifs/colbert-pizza.gif') no-repeat 0 0;
     background-size: cover;
   }
+  &.snowwhite {
+    background: url('../../images/gifs/snow-white.gif') no-repeat 0 0;
+    background-size: cover;
+  }
+  &.cloudmoney {
+    background: url('../../images/gifs/cloud-money.gif') no-repeat 0 0;
+    background-size: cover;
+  }
 }
 
 slide.current {

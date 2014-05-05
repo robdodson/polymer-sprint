@@ -1247,6 +1247,47 @@ https://code.google.com/p/io-2012-slides
       <h2></h2>
       <h3></h3>
     </hgroup>
+    <article class="no-top-margin"><pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-baz" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;x-foo&gt;&lt;/x-foo&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-bar" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;style&gt;
+      x-baz /deep/ h1 {
+        color: red;
+      }
+    &lt;/style&gt;</b>
+    <b>&lt;x-baz&gt;&lt;/x-baz&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <x-bar2></x-bar2>
+  </output>
+</div></article>
+ 
+</slide>
+
+<slide     >
+  
+    <hgroup>
+      <span>
+        
+        
+        
+        
+      </span>
+      <h2></h2>
+      <h3></h3>
+    </hgroup>
     <article class="no-top-margin"><div class="build callback-list">
   <div>
     <pre class="prettyprint">:host or :host()</pre>
@@ -1270,6 +1311,22 @@ https://code.google.com/p/io-2012-slides
   </div>
   <h3><a href="http://robdodson.me/blog/2014/04/10/shadow-dom-css-cheat-sheet/">Shadow DOM CSS Cheat Sheet</a></h3>
 </div></article>
+ 
+</slide>
+
+<slide  class="nobackdrop nobackground highlight"  data-body-class="cloudmoney" >
+  
+    <hgroup>
+      <span>
+        
+        
+        
+        
+      </span>
+      <h2>Yay! We're done!</h2>
+      <h3></h3>
+    </hgroup>
+    <article ></article>
  
 </slide>
 

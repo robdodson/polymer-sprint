@@ -794,6 +794,38 @@ content_class: no-top-margin
 
 ---
 
+# title: Styling Host Context
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-baz" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;x-foo&gt;&lt;/x-foo&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="x-bar" noscript&gt;
+  &lt;template&gt;
+    <b>&lt;style&gt;
+      x-baz /deep/ h1 {
+        color: red;
+      }
+    &lt;/style&gt;</b>
+    <b>&lt;x-baz&gt;&lt;/x-baz&gt;</b>
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <x-bar2></x-bar2>
+  </output>
+</div>
+
+---
+
 content_class: no-top-margin
 
 <div class="build callback-list">
@@ -819,6 +851,12 @@ content_class: no-top-margin
   </div>
   <h3><a href="http://robdodson.me/blog/2014/04/10/shadow-dom-css-cheat-sheet/">Shadow DOM CSS Cheat Sheet</a></h3>
 </div>
+
+---
+
+title: Yay! We're done!
+body_class: cloudmoney
+class: nobackdrop nobackground highlight
 
 ---
 
