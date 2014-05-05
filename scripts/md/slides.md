@@ -1,13 +1,30 @@
+title: First steps with Polymer
+
+<div class="build">
+  <div>
+    <h3>1. Get the code - bower, zip, github, etc.</h3>
+    <pre class="prettyprint">bower install --save Polymer/polymer</pre>
+  </div>
+  <div>
+    <h3>2. Include platform.js</h3>
+    <pre class="prettyprint">&lt;script src="platform.js"&gt;</pre>
+  </div>
+  <div>
+    <h3>3. Import the polymer.html</h3>
+    <pre class="prettyprint">&lt;link rel="polymer.html"&gt;</pre>
+  </div>
+  <div>
+    <h3>4. Write your definition</h3>
+    <pre class="prettyprint">&lt;polymer-element name="my-element"&gt;</pre>
+  </div>
+</div>
+
+---
+
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded"><em>Creating</em> elements</h2>
-
-<aside class="note">
-  <section>
-    <p>We've talked a bit about using elements, now let's look at how you can create your own elements. Polymer is going to make this really easy for you!</p>
-  </section>
-</aside>
+<h2 class="faded" style="font-size: 54px;"><em>&lt;polymer-element&gt;</em> gives you an easy, <em>declarative</em> way to define your own <em>custom elements</em>.</h2>
 
 ---
 
@@ -34,6 +51,7 @@ keep_content: true
 
 ---
 
+hidden: true
 body_class: core-fill
 content_class: flexbox vcenter
 
@@ -52,8 +70,8 @@ title: Declarative registration
 #subtitle: Declarative registration
 
 <pre class="corner prettyprint">
-&lt;script src="<span alt="bower install polymer" data-tooltip="bower install polymer">platform.js</span>">&lt;/script>
-&lt;link rel="import" href="<span alt="bower install polymer" data-tooltip="bower install polymer">polymer.html</span>">
+&lt;script src="<span alt="bower install Polymer/polymer" data-tooltip="bower install Polymer/polymer">platform.js</span>">&lt;/script>
+&lt;link rel="import" href="<span alt="bower install Polymer/polymer" data-tooltip="bower install Polymer/polymer">polymer.html</span>">
 </pre>
 
 <pre class="prettyprint" style="font-size:30px; line-height: 1.2;" data-lang="HTML">
@@ -90,8 +108,8 @@ id: declarative-registration-proto
 title: Declarative registration
 
 <pre class="corner prettyprint">
-&lt;script src="<span alt="bower install polymer" data-tooltip="bower install polymer">platform.js</span>">&lt;/script>
-&lt;link rel="import" href="<span alt="bower install polymer" data-tooltip="bower install polymer">polymer.html</span>">
+&lt;script src="<span alt="bower install Polymer/polymer" data-tooltip="bower install Polymer/polymer">platform.js</span>">&lt;/script>
+&lt;link rel="import" href="<span alt="bower install Polymer/polymer" data-tooltip="bower install Polymer/polymer">polymer.html</span>">
 </pre>
 
 <pre class="prettyprint" style="font-size:30px; line-height: 1.2;" data-lang="HTML">
@@ -124,10 +142,48 @@ title: Declarative registration
 
 ---
 
-body_class: core-fill
-content_class: flexbox vcenter
+title: Now you try!
+body_class: stormtroopers
+class: nobackdrop nobackground highlight
 
-<h2 class="faded"><em>Lifecycle</em> callbacks</h2>
+---
+
+body_class: core-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;"><em>Lifecycle callbacks</em> allow you to <em>hook into</em> and <em>react</em> to major changes.</h2>
+
+---
+
+# title: Lifecycle explained
+content_class: no-top-margin
+
+<div class="build callback-list">
+  <div>
+    <pre class="prettyprint">created: function() {...}</pre>
+    An instance of the element is created.
+  </div>
+  <div>
+    <pre class="prettyprint">ready: function() {...}</pre>
+    The &lt;polymer-element&gt; has been fully prepared (e.g. Shadow DOM created, property observers setup, event listeners attached, etc). <b>Preferred over created</b>.
+  </div>
+  <div>
+    <pre class="prettyprint">attached: function() {...}</pre>
+    An instance of the element was inserted into the DOM. Guaranteed to have a parent.
+  </div>
+  <div>
+    <pre class="prettyprint">domReady: function() {...}</pre>
+    The element’s initial set of children are guaranteed to exist.
+  </div>
+  <div>
+    <pre class="prettyprint">detached: function() {...}</pre>
+    An instance was removed from the DOM.
+  </div>
+  <div>
+    <pre class="prettyprint">attributeChanged: function(attrName, oldVal, newVal) {...}</pre>
+    An attribute was added, removed, or updated. <b>Prefer changed watchers, except for native attributes</b>
+  </div>
+</div>
 
 ---
 
@@ -161,16 +217,16 @@ title: Lifecycle Callbacks
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded">Automatic <em>node finding</em></h2>
+<h2 class="faded" style="font-size: 54px;"><em>Automatic node finding</em> makes it easy to <em>query for elements</em> in your <em>Shadow DOM</em>.</h2>
 
 ---
 
 id: automatic-node-finding
 title: Automatic Node Finding
 
-<pre contenteditable class="prettyprint" style="font-size:25px; line-height: 1.2;" data-lang="HTML">
+<pre class="prettyprint" style="font-size:25px; line-height: 1.2;" data-lang="HTML">
 &lt;polymer-element name="fat-unicorn"&gt;
   &lt;template&gt;
     &lt;h1&gt;
@@ -197,12 +253,6 @@ title: Automatic Node Finding
 
 ---
 
-title: Time 4 Exercise!
-body_class: fatunicorn
-class: nobackdrop nobackground highlight
-
----
-
 body_class: core-fill
 content_class: flexbox vcenter
 
@@ -216,29 +266,28 @@ content_class: flexbox vcenter
 
 ---
 
-id: two-way-binding
 title: Binding Expressions
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
-&lt;polymer-element name="owner-element"&gt;
+&lt;polymer-element name="fat-unicorn"&gt;
   &lt;template&gt;
-    &lt;h2&gt;<b>{{owner}}</b> built me with Polymer&lt;/h2&gt;
+    &lt;h1&gt;Hello, my name is: <b>{{myName}}</b>&lt;/h1&gt;
   &lt;/template&gt;
   &lt;script&gt;
-  Polymer('owner-element', {
-    <b>owner: 'Rob'</b>
-  });
+    Polymer('fat-unicorn', {
+      <b>myName: 'Princess Omnomnomnom'</b>
+    });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
 </pre>
 
 <pre class="prettyprint" style="font-size:30px; line-height: 1.2;" data-lang="HTML">
-&lt;owner-element&gt;&lt;/owner-element&gt;
+&lt;fat-unicorn&gt;&lt;/fat-unicorn&gt;
 </pre>
 
 <div class="component-demo">
   <output style="display: block; padding: 10px;">
-    <owner-element></owner-element>
+    <fat-unicorn2></fat-unicorn2>
   </output>
 </div>
 
@@ -270,25 +319,25 @@ id: published-properties
 title: Published properties
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
-&lt;polymer-element name="owner-element" <b>attributes="owner"</b>&gt;
+&lt;polymer-element name="fat-unicorn" <b>attributes="myName"</b>&gt;
   &lt;template&gt;
-    &lt;h2&gt;<b>{{owner}}</b> built me with Polymer&lt;/h2&gt;
+    &lt;h1&gt;Hello, my name is: <b>{{myName}}</b>&lt;/h1&gt;
   &lt;/template&gt;
   &lt;script&gt;
-  Polymer('owner-element', {
-    <b>owner: 'Rob'</b>
-  });
+    Polymer('fat-unicorn', {
+      <b>myName: 'Princess Omnomnomnom'</b>
+    });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
 </pre>
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
-&lt;owner-element <b>owner="Alex"</b>&gt;&lt;/owner-element&gt;
+&lt;fat-unicorn <b>myName="Butterchub"</b>&gt;&lt;/fat-unicorn&gt;
 </pre>
 
 <div class="component-demo">
   <output style="display: block; padding: 10px;">
-    <owner-element owner="Alex"></owner-element>
+    <fat-unicorn3 myName="Butterchub"></fat-unicorn3>
   </output>
 </div>
 
@@ -300,6 +349,51 @@ title: Published properties
   <p>So we've got a bit of data in here, how about interactivity?</p>
   </section>
 </aside>
+
+---
+
+title: Time 4 Exercise!
+body_class: fatunicorn
+class: nobackdrop nobackground highlight
+
+---
+
+body_class: core-fill
+content_class: flexbox vcenter
+
+<h2 class="faded">Changed <em>Watchers</em></h2>
+
+---
+
+id: changed-watchers
+content_class: no-top-margin no-bold
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="email-field" <b>attributes="address"</b>&gt;
+  &lt;template&gt;
+    &lt;label for="email"&gt;Enter email:&lt;/label&gt;
+    <b>&lt;input type="text" id="email" value="{{address}}"&gt;</b>
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('email-field', {
+      <b>addressChanged: function(oldVal, newVal) {
+        if (newVal &amp;&amp; newVal.indexOf('@') != -1) {
+          return this.$.email.style.border = '3px solid green';
+        }
+        ...
+      }</b>
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 2;">
+    <!-- prevent the slide deck from transitioning when we type -->
+    <email-field class="disable-keyboard-events">
+    </email-field>
+  </output>
+</div>
 
 ---
 
@@ -355,42 +449,279 @@ title: Declarative Event Handlers
 body_class: core-fill
 content_class: flexbox vcenter
 
-<h2 class="faded">Changed <em>Watchers</em></h2>
+<h2 class="faded">Template <em>bindings</em></h2>
 
 ---
 
-id: changed-watchers
-content_class: no-top-margin no-bold
+title: Template Bindings
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
-&lt;polymer-element name="email-field" <b>attributes="address"</b>&gt;
-  &lt;template&gt;
-    &lt;label for="email"&gt;Enter email:&lt;/label&gt;
-    <b>&lt;input type="text" id="email" value="{{address}}"&gt;</b>
-  &lt;/template&gt;
+&lt;polymer-element name="login-form"&gt;
+  &lt;input type="text" placeholder="Username"&gt;
+  &lt;input type="password" placeholder="Password"&gt;
+  <b>&lt;template if="{{flash}}"&gt;
+    &lt;div class="alert"&gt;{{flash}}&lt;/div&gt;
+  &lt;/template&gt;</b>
   &lt;script&gt;
-    Polymer('email-field', {
-      <b>addressChanged: function(oldVal, newVal) {
-        if (newVal &amp;&amp; newVal.indexOf('@') != -1) {
-          return this.$.email.style.border = '3px solid green';
-        }
-        this.$.email.style.border = '1px solid silver';
-      }</b>
+    Polymer('login-form', {
+      <b>flash: 'Your session expired!'</b>
     });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
 </pre>
 
 <div class="component-demo">
-  <output style="display: block; padding: 10px; zoom: 2;">
-    <!-- prevent the slide deck from transitioning when we type -->
-    <email-field class="disable-keyboard-events">
-    </email-field>
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <login-form></login-form>
   </output>
 </div>
 
 ---
 
+content_class: no-top-margin no-bold
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="dwarf-list"&gt;
+  &lt;template&gt;
+    &lt;ul&gt;
+      &lt;template repeat="{{dwarf in dwarves}}"&gt;
+        &lt;li&gt;{{dwarf.name}}&lt;/li&gt;
+      &lt;/template&gt;
+    &lt;/ul&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('dwarf-list', {
+      dwarves: [{name: 'Sneezy'}, {name: 'Dopey'}, ...]
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo" style="padding: 0;">
+  <output style="display: block; zoom: 1.5;">
+    <dwarf-list></dwarf-list>
+  </output>
+</div>
+
+---
+
+title: Hang in there!
+body_class: pukingrainbows
+class: nobackdrop nobackground highlight
+
+---
+
+body_class: platform-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;"><em>Insertion points</em> invite content from the host element into the Shadow DOM.</h2>
+
+---
+
+title: Insertion Points
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="x-pokemon" noscript&gt;
+  &lt;template&gt;
+    &lt;h1&gt;A wild &lt;content&gt;&lt;/content&gt; appeared!&lt;/h1&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;x-pokemon&gt;Jigglypuff&lt;/x-pokemon&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <x-pokemon>Jigglypuff</x-pokemon>
+  </output>
+</div>
+
+---
+
+body_class: platform-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;"><em>Specific content</em> can be targeted with the <em>select</em> attribute.</h2>
+
+---
+
+# title: Insertion Points
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="user-info" noscript&gt;
+  &lt;template&gt;
+    &lt;h2&gt;Last Name: <b>&lt;content select=".last-name"&gt;</b>&lt;/content&gt;&lt;/h2&gt;
+    &lt;h2&gt;First Name: <b>&lt;content select=".first-name"&gt;</b>&lt;/content&gt;&lt;/h2&gt;
+    &lt;h2&gt;<b>&lt;content&gt;&lt;/content&gt;</b>&lt;/h2&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;user-info&gt;
+  Hello World
+  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
+  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
+&lt;/user-info&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; zoom: 1.2;">
+    <user-info>
+      Hello World
+      <span class="first-name">Rob</span>
+      <span class="last-name">Dodson</span>
+    </user-info>
+  </output>
+</div>
+
+---
+
+body_class: platform-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;">To <em>access distributed content</em>, use the <em><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/#toc-getDistributedNodes">getDistributedNodes</a></em> method.</h2>
+
+---
+
+title: Hang in there!
+body_class: pukingrainbows
+class: nobackdrop nobackground highlight
+
+---
+
+content_class: no-top-margin
+
+<div class="build callback-list">
+  <div>
+    <pre class="prettyprint">:host or :host()</pre>
+    Selects a shadow host element. May contain additional identifiers in parenthesis.
+  </div>
+  <div>
+    <pre class="prettyprint">:host-context()</pre>
+    Selects a shadow host based on a matching parent element.
+  </div>
+  <div>
+    <pre class="prettyprint">::shadow</pre>
+    Selects shadow trees that are one level deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
+  </div>
+  <div>
+    <pre class="prettyprint">/deep/</pre>
+    Selects shadow trees that are N levels deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
+  </div>
+  <div>
+    <pre class="prettyprint">::content</pre>
+    Selects distributed nodes inside of an element. Needs to be paired with <code>polyfill-next-selector</code> for browsers that do not support the native selector.
+  </div>
+  <h3><a href="http://robdodson.me/blog/2014/04/10/shadow-dom-css-cheat-sheet/">Shadow DOM CSS Cheat Sheet</a></h3>
+</div>
+
+---
+
+title: Styling Host
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="hai-element" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host {
+        display: inline-block;
+        border: 5px solid red;
+      }
+    &lt;/style&gt;
+    &lt;h1&gt;Oh hai!&lt;/h1&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <hai-element></hai-element>
+  </output>
+</div>
+
+---
+
+# title: Styling Host
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:24px; line-height: 1.2;">
+&lt;polymer-element name="hai-element" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host {
+        display: inline-block;
+      }
+
+      <b>:host(.bordered) {
+        border: 5px solid red;
+      }</b>
+    &lt;/style&gt;
+    &lt;h1&gt;Oh hai!&lt;/h1&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;hai-element <b>class="bordered"</b>&gt;&lt;/hai-element&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px; zoom: 1.5;">
+    <hai-element2 class="bordered"></hai-element2>
+  </output>
+</div>
+
+---
+
+body_class: platform-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;"><em>External stylesheets</em> may be <em>opted-in</em> to the Shadow DOM polyfill by adding the <br><em>shim-shadowdom</em> attribute.</h2>
+
+---
+
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
+&lt;style <b>shim-shadowdom</b>&gt;
+  x-foo::shadow h1 {
+    color: red;
+  }
+&lt;/style&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
+&lt;polymer-element name="x-foo" noscript&gt;
+  &lt;template&gt;
+    &lt;h1&gt;Hello from x-foo&lt;/h1&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
+&lt;x-foo&gt;&lt;/x-foo&gt;
+</pre>
+
+<div class="component-demo">
+  <style shim-shadowdom>
+    x-foo::shadow h1 {
+      color: red;
+    }
+  </style>
+  <output style="display: block; padding: 10px;">
+    <x-foo></x-foo>
+  </output>
+</div>
+
+<a style="display: inline-block; margin-top: 15px;" href="http://jsbin.com/foyel/6/edit">Example JSBin</a>
+
+---
+
+hidden: true
 id: more-complex-elements
 title: Define an API
 subtitle: complex elements require more juice...
@@ -452,6 +783,7 @@ subtitle: complex elements require more juice...
 
 ---
 
+hidden: true
 title: Features in action
 subtitle: responsive design...using DOM
 #content_class: smaller 
@@ -598,6 +930,7 @@ class: polymer-diagram
 
 ---
 
+hidden: true
 id: polymerurl
 class: nobackdrop nobackground yum do-transition
 content_class: flexbox vcenter centered

@@ -59,6 +59,12 @@
     em {
       font-style: normal;
       color: rgba(255, 255, 255, 1);
+
+      a, a:hover, a:visited {
+        text-decoration: none;
+        color: inherit !important;
+        border-bottom: 1px dashed white;
+      }
     }
   }
 }
@@ -194,6 +200,15 @@ body {
   }
   &.fatunicorn {
     background: url('../../images/gifs/fat-unicorn.gif') no-repeat 0 50%;
+    background-size: cover;
+  }
+  &.stormtroopers {
+    background: url('../../images/gifs/storm-troopers.gif') no-repeat 80% 0;
+    background-color: #434344;
+    background-size: contain;
+  }
+  &.pukingrainbows {
+    background: url('../../images/gifs/puking-rainbows.gif') no-repeat 0 0;
     background-size: cover;
   }
 }
@@ -1103,3 +1118,12 @@ slide.thank-you-slide {
 .no-bold b {
   font-weight: 300 !important;
 }
+
+.callback-list pre {
+  margin-bottom: 5px;
+}
+.callback-list > div {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+

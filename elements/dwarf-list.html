@@ -1,0 +1,15 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="dwarf-list">
+  <template>
+    <ul>
+      <template repeat="{{dwarf in dwarves}}">
+        <li>{{dwarf.name}}</li>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer('dwarf-list', {
+      dwarves: [{name: 'Sneezy'}, {name: 'Dopey'}, {name: 'Litigious'}, {name: 'Klepto'}, {name: 'Peanut'}, {name: 'Flapjack'}, {name: 'Lumbermancer'}]
+    });
+  </script>
+</polymer-element>

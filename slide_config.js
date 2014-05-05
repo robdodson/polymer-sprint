@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Polymer',
-    subtitle: 'Q2 MTV Sprint',
+    subtitle: 'Bootcamp, Act 1',
     eventInfo: {
       title: 'Google',
       date: 'May 05, 2014'

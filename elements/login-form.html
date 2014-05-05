@@ -1,0 +1,15 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="login-form">
+  <template>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <template if="{{flash}}">
+      <div class="alert">{{flash}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer('login-form', {
+      flash: 'Your session expired!'
+    });
+  </script>
+</polymer-element>
