@@ -142,6 +142,38 @@ title: Declarative registration
 
 ---
 
+body_class: core-fill
+content_class: flexbox vleft
+
+<h2 class="faded" style="font-size: 54px;">The <em>polymer-ready</em> event will tell you when all elements are <em>upgraded</em> and <em>ready to use</em>.</h2>
+
+---
+
+title: Listening for polymer-ready
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
+&lt;polymer-element name="x-foo"&gt;
+  &lt;template&gt;...&lt;/template&gt;
+  &lt;script&gt;
+    Polymer('x-foo', {
+      sayHello: function() {
+        ...
+      }
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;" data-lang="HTML">
+&lt;script&gt;
+  document.addEventListener('polymer-ready', function() {
+    var foo = document.querySelector('x-foo').sayHello();
+  });
+&lt;/script&gt;
+</pre>
+
+---
+
 title: Now you try!
 body_class: stormtroopers
 class: nobackdrop nobackground highlight
@@ -219,7 +251,7 @@ title: Lifecycle Callbacks
 body_class: core-fill
 content_class: flexbox vleft
 
-<h2 class="faded" style="font-size: 54px;"><em>Automatic node finding</em> makes it easy to <em>query for elements</em> in your <em>Shadow DOM</em>.</h2>
+<h2 class="faded" style="font-size: 54px;"><em>Automatic node finding</em> makes it easy to <em>query</em> for elements in your <em>Shadow DOM</em>.</h2>
 
 ---
 
@@ -254,15 +286,9 @@ title: Automatic Node Finding
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded"><em>Binding</em> expressions</h2>
-
-<aside class="note">
-  <section>
-    <p>To work with data in an element we use binding expressions</p>
-  </section>
-</aside>
+<h2 class="faded" style="font-size: 54px;"><em>Binding expressions</em> cut down on <em>glue code</em> and keep your elements <em>tidy</em>.</h2>
 
 ---
 
@@ -303,15 +329,9 @@ title: Binding Expressions
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded"><em>Published</em> properties</h2>
-
-<aside class="note">
-  <section>
-    <p>To do that we've created published properties</p>
-  </section>
-</aside>
+<h2 class="faded" style="font-size: 54px;">Create <em>two-way data bindings</em> using <em>published properties</em>.</h2>
 
 ---
 
@@ -359,9 +379,9 @@ class: nobackdrop nobackground highlight
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded">Changed <em>Watchers</em></h2>
+<h2 class="faded" style="font-size: 54px;"><em>Changed watchers</em> automatically fire whenever a <em>custom attribute</em> is <em>updated</em>.</h2>
 
 ---
 
@@ -398,20 +418,14 @@ content_class: no-top-margin no-bold
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded">Declarative <em>event bindings</em></h2>
-
-<aside class="note">
-  <section>
-    <p>To quickly add interactivity we can use declarative event bindings</p>
-  </section>
-</aside>
+<h2 class="faded" style="font-size: 54px;"><em>Declarative event bindings</em> handle <em>setting up</em> and <em>tearing down</em> event handlers.</h2>
 
 ---
 
 id: declarative-event-bindings
-title: Declarative Event Handlers
+title: Declarative Event Bindings
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
 &lt;polymer-element name="click-element"&gt;
@@ -447,9 +461,9 @@ title: Declarative Event Handlers
 ---
 
 body_class: core-fill
-content_class: flexbox vcenter
+content_class: flexbox vleft
 
-<h2 class="faded">Template <em>bindings</em></h2>
+<h2 class="faded" style="font-size: 54px;"><em><a href="http://www.polymer-project.org/docs/polymer/template.html">Template bindings</a></em> allow you to <em>stamp out</em> bits of DOM based on <em>model data</em>.</h2>
 
 ---
 
@@ -478,20 +492,20 @@ title: Template Bindings
 
 ---
 
-content_class: no-top-margin no-bold
+content_class: no-top-margin
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
 &lt;polymer-element name="dwarf-list"&gt;
   &lt;template&gt;
     &lt;ul&gt;
-      &lt;template repeat="{{dwarf in dwarves}}"&gt;
+      <b>&lt;template repeat="{{dwarf in dwarves}}"&gt;
         &lt;li&gt;{{dwarf.name}}&lt;/li&gt;
-      &lt;/template&gt;
+      &lt;/template&gt;</b>
     &lt;/ul&gt;
   &lt;/template&gt;
   &lt;script&gt;
     Polymer('dwarf-list', {
-      dwarves: [{name: 'Sneezy'}, {name: 'Dopey'}, ...]
+      <b>dwarves: [{name: 'Sneezy'}, {name: 'Dopey'}, ...]</b>
     });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
@@ -514,7 +528,9 @@ class: nobackdrop nobackground highlight
 body_class: platform-fill
 content_class: flexbox vleft
 
-<h2 class="faded" style="font-size: 54px;"><em>Insertion points</em> invite content from the host element into the Shadow DOM.</h2>
+<h2 class="faded" style="font-size: 54px;"><em>Insertion points</em> invite content from the host element into the <em>Shadow DOM</em>.</h2>
+<br>
+<h2 class="faded" style="font-size: 54px;">Nodes that cross over are called <em>distributed nodes</em>.</h2>
 
 ---
 
@@ -523,13 +539,13 @@ title: Insertion Points
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
 &lt;polymer-element name="x-pokemon" noscript&gt;
   &lt;template&gt;
-    &lt;h1&gt;A wild &lt;content&gt;&lt;/content&gt; appeared!&lt;/h1&gt;
+    <b>&lt;h1&gt;A wild &lt;content&gt;&lt;/content&gt; appeared!&lt;/h1&gt;</b>
   &lt;/template&gt;
 &lt;/polymer-element&gt;
 </pre>
 
 <pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
-&lt;x-pokemon&gt;Jigglypuff&lt;/x-pokemon&gt;
+<b>&lt;x-pokemon&gt;Jigglypuff&lt;/x-pokemon&gt;</b>
 </pre>
 
 <div class="component-demo">
@@ -583,41 +599,65 @@ content_class: no-top-margin
 body_class: platform-fill
 content_class: flexbox vleft
 
+<h2 class="faded" style="font-size: 54px;">You can <em>style distributed nodes</em> with the <em>::content</em> pseudo element.</h2>
+<br>
+<h2 class="faded" style="font-size: 54px;">Use the <em>polyfill-next-selector</em> to <em>shim support</em> for ::content in other browsers.</h2>
+
+---
+
+# title: Styling distributed nodes
+content_class: no-top-margin
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;polymer-element name="name-tag" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      polyfill-next-selector { content: ':host > h2' }
+      ::content h2 {
+        font-family: sans-serif;
+        color: green;
+      }
+    &lt;/style&gt;
+    &lt;content select=".name"&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+<pre class="prettyprint" style="font-size:27px; line-height: 1.2;">
+&lt;name-tag&gt;
+  &lt;h2 class="name"&gt;Hi, I'm Rob Dodson&lt;/h2&gt;
+&lt;/name-tag&gt;
+</pre>
+
+<div class="component-demo">
+  <output style="display: block; padding: 10px;">
+    <name-tag>
+      <h2 class="name">Hi, I'm Rob Dodson</h2>
+    </name-tag>
+  </output>
+</div>
+
+<a style="display: inline-block; margin-top: 15px;" href="http://jsbin.com/monam/6/edit">Example JSBin</a>
+
+---
+
+body_class: platform-fill
+content_class: flexbox vleft
+
 <h2 class="faded" style="font-size: 54px;">To <em>access distributed content</em>, use the <em><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/#toc-getDistributedNodes">getDistributedNodes</a></em> method.</h2>
 
 ---
 
-title: Hang in there!
-body_class: pukingrainbows
+title: OK. Your turn to type!
+body_class: colbertpizza
 class: nobackdrop nobackground highlight
 
 ---
 
-content_class: no-top-margin
+body_class: elements-fill
+content_class: flexbox vleft
 
-<div class="build callback-list">
-  <div>
-    <pre class="prettyprint">:host or :host()</pre>
-    Selects a shadow host element. May contain additional identifiers in parenthesis.
-  </div>
-  <div>
-    <pre class="prettyprint">:host-context()</pre>
-    Selects a shadow host based on a matching parent element.
-  </div>
-  <div>
-    <pre class="prettyprint">::shadow</pre>
-    Selects shadow trees that are one level deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
-  </div>
-  <div>
-    <pre class="prettyprint">/deep/</pre>
-    Selects shadow trees that are N levels deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
-  </div>
-  <div>
-    <pre class="prettyprint">::content</pre>
-    Selects distributed nodes inside of an element. Needs to be paired with <code>polyfill-next-selector</code> for browsers that do not support the native selector.
-  </div>
-  <h3><a href="http://robdodson.me/blog/2014/04/10/shadow-dom-css-cheat-sheet/">Shadow DOM CSS Cheat Sheet</a></h3>
-</div>
+<h2 class="faded" style="font-size: 54px;">To target your <em>Shadow Host</em> for styling, use the new <em>:host</em>, <em>:host()</em>, and <em>:host-context()</em> pseudo-classes.</h2>
 
 ---
 
@@ -677,6 +717,35 @@ content_class: no-top-margin
 
 ---
 
+content_class: no-top-margin
+
+<div class="build callback-list">
+  <div>
+    <pre class="prettyprint">:host or :host()</pre>
+    Selects a shadow host element. May contain additional identifiers in parenthesis.
+  </div>
+  <div>
+    <pre class="prettyprint">:host-context()</pre>
+    Selects a shadow host based on a matching parent element.
+  </div>
+  <div>
+    <pre class="prettyprint">::shadow</pre>
+    Selects shadow trees that are one level deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
+  </div>
+  <div>
+    <pre class="prettyprint">/deep/</pre>
+    Selects shadow trees that are N levels deep inside of an element. Will need to be combined with <code>shim-shadowdom</code> directive if used outside of a Polymer element.
+  </div>
+  <div>
+    <pre class="prettyprint">::content</pre>
+    Selects distributed nodes inside of an element. Needs to be paired with <code>polyfill-next-selector</code> for browsers that do not support the native selector.
+  </div>
+  <h3><a href="http://robdodson.me/blog/2014/04/10/shadow-dom-css-cheat-sheet/">Shadow DOM CSS Cheat Sheet</a></h3>
+</div>
+
+---
+
+hidden: true
 body_class: platform-fill
 content_class: flexbox vleft
 
